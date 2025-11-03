@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "ESPN Calendar Link",
+  "version": "1.0.0",
+  "description": "Add ESPN and KenPom games to your Google Calendar with one click",
+  "permissions": [],
+  "host_permissions": [
+    "*://*.espn.com/*",
+    "*://*.kenpom.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.espn.com/*/schedule*",
+        "*://*.espn.com/*/scoreboard*",
+        "*://*.kenpom.com/*"
+      ],
+      "js": ["utils.js", "content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "ESPN Calendar Link"
+  }
+}
