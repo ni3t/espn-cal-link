@@ -1,17 +1,22 @@
-# ESPN Calendar Link
+# Sports Calendar Link
 
-A Chrome browser extension that adds an "Add to Calendar" button to ESPN sports schedule pages, making it easy to add games and events directly to your Google Calendar.
+A Chrome browser extension that adds an "Add to Calendar" button to sports schedule pages, making it easy to add games and events directly to your Google Calendar.
+
+## Supported Sites
+
+- **ESPN** - All sports schedule pages (NFL, NBA, MLB, College Basketball, etc.)
+- **KenPom** - College basketball fanmatch pages
 
 ## Features
 
-- Seamlessly integrates with ESPN sports schedule pages
+- Seamlessly integrates with ESPN and KenPom schedule pages
 - One-click "Add to Calendar" button for any game or event
 - Automatically generates Google Calendar event links with:
-  - Event title (teams/matchup)
+  - Event title in "Away @ Home (TV Network)" format
   - Date and time
-  - Location/venue information
-  - Event description
-- Opens Google Calendar in a new tab with the event pre-populated and ready to save
+  - Sport-specific event durations
+  - TV/streaming network information
+- Opens Google Calendar in a popup window with the event pre-populated and ready to save
 
 ## Installation
 
@@ -31,23 +36,26 @@ _Coming soon_
 
 4. Click "Load unpacked" and select the extension directory
 
-5. The ESPN Calendar Link extension should now appear in your extensions list
+5. The Sports Calendar Link extension should now appear in your extensions list
 
 ## Usage
 
-1. Navigate to any ESPN sports schedule page (e.g., NFL, NBA, MLB, etc.)
-2. Look for the "Add to Calendar" button next to scheduled games
+1. Navigate to any supported sports schedule page:
+   - **ESPN**: Any sports schedule (e.g., `espn.com/nba/schedule`)
+   - **KenPom**: Fanmatch page (e.g., `kenpom.com/fanmatch.php?d=2025-11-03`)
+2. Look for the "📅 Add to Calendar" button next to scheduled games
 3. Click the button to open Google Calendar with the event details pre-populated
 4. Review the event details and click "Save" in Google Calendar to add it to your calendar
 
 ## How It Works
 
 The extension:
-1. Detects when you're viewing an ESPN schedule page
-2. Injects "Add to Calendar" buttons next to game listings
-3. Extracts game information (teams, date, time, location) from the page
-4. Constructs a Google Calendar URL using the [Google Calendar URL scheme](https://github.com/InteractionDesignFoundation/add-event-to-calendar-docs/blob/main/services/google.md)
-5. Opens the URL in a new tab when you click the button
+1. Detects when you're viewing a supported schedule page (ESPN or KenPom)
+2. Injects "Add to Calendar" buttons next to game time listings
+3. Extracts game information (teams, date, time, TV network) from the page
+4. Determines home/away teams and formats title as "Away @ Home (TV Network)"
+5. Constructs a Google Calendar URL using the [Google Calendar URL scheme](https://github.com/InteractionDesignFoundation/add-event-to-calendar-docs/blob/main/services/google.md)
+6. Opens the URL in a popup window when you click the button
 
 ## Development
 
@@ -90,7 +98,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## Privacy
 
 This extension:
-- Only runs on ESPN.com domains
+- Only runs on ESPN.com and KenPom.com domains
 - Does not collect or transmit any personal data
 - Does not require any special permissions beyond basic content script access
 - All processing happens locally in your browser
@@ -102,6 +110,7 @@ MIT License - see LICENSE file for details
 ## Acknowledgments
 
 - ESPN for providing comprehensive sports schedules
+- KenPom for college basketball analytics and schedules
 - Google Calendar for the calendar URL scheme
 - Chrome Extensions documentation and community
 
