@@ -21,7 +21,7 @@ _Coming soon_
 ### Manual Installation (Development)
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/espn-cal-link.git
+   git clone https://github.com/ni3t/espn-cal-link.git
    cd espn-cal-link
    ```
 
