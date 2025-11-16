@@ -396,7 +396,7 @@ function extractGameData(gameRow, dateStr) {
     const endTime = calculateEndTime(startTime, duration);
 
     // Format event data
-    const title = formatEventTitle(awayTeam, homeTeam, tvNetwork);
+    const title = formatEventTitle(awayTeam, homeTeam, tvNetwork, sport);
     const description = ''; // Empty description
 
     console.log('ESPN Calendar Link: Final event data:', { title, description, startTime, endTime });
@@ -549,11 +549,12 @@ function extractGameDataKenPom(gameRow, dateStr) {
     }
 
     // Calculate end time - KenPom is basketball, so 2 hours
+    const sport = 'basketball'; // KenPom is always basketball
     const duration = 2;
     const endTime = calculateEndTime(startTime, duration);
 
     // Format event data
-    const title = formatEventTitle(awayTeam, homeTeam, tvNetwork);
+    const title = formatEventTitle(awayTeam, homeTeam, tvNetwork, sport);
     const description = '';
 
     console.log('ESPN Calendar Link: Final KenPom event data:', { title, description, startTime, endTime });

@@ -29,6 +29,32 @@ const SPORT_DURATIONS = {
 };
 
 /**
+ * Sport emoji mapping
+ */
+const SPORT_EMOJIS = {
+  'football': '🏈',
+  'nfl': '🏈',
+  'college-football': '🏈',
+  'basketball': '🏀',
+  'nba': '🏀',
+  'mens-college-basketball': '🏀',
+  'womens-college-basketball': '🏀',
+  'wnba': '🏀',
+  'baseball': '⚾',
+  'mlb': '⚾',
+  'college-baseball': '⚾',
+  'hockey': '🏒',
+  'nhl': '🏒',
+  'college-hockey': '🏒',
+  'soccer': '⚽',
+  'mls': '⚽',
+  'golf': '⛳',
+  'tennis': '🎾',
+  'racing': '🏁',
+  'default': '🏆'
+};
+
+/**
  * Detect sport from current URL
  * @returns {string} Sport identifier
  */
@@ -53,6 +79,15 @@ function detectSport() {
  */
 function getEventDuration(sport) {
   return SPORT_DURATIONS[sport] || SPORT_DURATIONS['default'];
+}
+
+/**
+ * Get emoji for a sport
+ * @param {string} sport - Sport identifier
+ * @returns {string} Emoji character
+ */
+function getSportEmoji(sport) {
+  return SPORT_EMOJIS[sport] || SPORT_EMOJIS['default'];
 }
 
 /**
@@ -154,13 +189,18 @@ function buildGoogleCalendarURL(eventData) {
  * @param {string} awayTeam - Away team name
  * @param {string} homeTeam - Home team name
  * @param {string} tvNetwork - TV network or streaming service (optional)
+ * @param {string} sport - Sport identifier (optional)
  * @returns {string} Formatted title
  */
-function formatEventTitle(awayTeam, homeTeam, tvNetwork) {
+function formatEventTitle(awayTeam, homeTeam, tvNetwork, sport) {
+  // Get sport emoji
+  const emoji = sport ? getSportEmoji(sport) : '';
+  const prefix = emoji ? `${emoji} ` : '';
+
   if (!tvNetwork || tvNetwork === '--') {
-    return `${awayTeam} @ ${homeTeam}`;
+    return `${prefix}${awayTeam} @ ${homeTeam}`;
   }
-  return `${awayTeam} @ ${homeTeam} (${tvNetwork})`;
+  return `${prefix}${awayTeam} @ ${homeTeam} (${tvNetwork})`;
 }
 
 /**
